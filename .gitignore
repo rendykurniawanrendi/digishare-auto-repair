@@ -24,3 +24,4 @@ Homestead.yaml
 Thumbs.db
 /storage/framework/sessions/*
 !/storage/framework/sessions/.gitignore
+/storage/certs/
