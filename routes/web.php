@@ -34,9 +34,8 @@ use App\Http\Controllers\Technician\RepairGuideController as TechnicianRepairGui
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
-
 
 /*
 |--------------------------------------------------------------------------
