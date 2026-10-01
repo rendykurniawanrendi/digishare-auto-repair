@@ -1,87 +1,9 @@
-<!DOCTYPE html>
-<html lang="id">
+<x-layouts.auto-repair
+    title=""
+    description=""
+>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Tambah DTR - Auto Repair</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body class="bg-slate-100 text-slate-800">
-
-    {{-- ================================================================
-         NAVBAR
-    ================================================================= --}}
-    <header class="fixed left-0 right-0 top-0 z-50 h-16 border-b border-slate-200 bg-white">
-        <div class="flex h-full items-center justify-between px-6">
-
-            {{-- BRAND --}}
-            <div class="flex items-center gap-3">
-
-                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-900 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         class="h-5 w-5"
-                         fill="none"
-                         viewBox="0 0 24 24"
-                         stroke="currentColor"
-                         stroke-width="2">
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M10.5 6h3m-6.75 4.5h9.5M7.5 15h9m-7.5 3h3m6.75-12.75a9 9 0 11-12.728 0A9 9 0 0118.75 5.25z" />
-                    </svg>
-                </div>
-
-                <div>
-                    <h1 class="text-sm font-bold text-slate-800">
-                        Auto Repair
-                    </h1>
-
-                    <p class="text-xs text-slate-400">
-                        Admin System
-                    </p>
-                </div>
-
-            </div>
-
-
-            {{-- USER --}}
-            <div class="flex items-center gap-3">
-
-                <div class="hidden text-right sm:block">
-                    <p class="text-sm font-semibold text-slate-700">
-                        {{ Auth::user()->name }}
-                    </p>
-
-                    <p class="text-xs text-slate-400">
-                        Administrator
-                    </p>
-                </div>
-
-                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">
-                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                </div>
-
-            </div>
-
-        </div>
-    </header>
-
-
-    {{-- ================================================================
-         SIDEBAR
-    ================================================================= --}}
-    @include('admin.components.sidebar')
-
-
-    {{-- ================================================================
-         MAIN
-    ================================================================= --}}
-    <main class="ml-64 min-h-screen bg-slate-100 pt-16">
-
-        <div class="w-full px-6 py-8 lg:px-10 xl:px-12">
+    <div class="w-full max-w-none">
 
             {{-- PAGE HEADER --}}
             <div class="mb-8">
@@ -104,11 +26,11 @@
                 </a>
 
                 <p class="mb-1 text-sm font-semibold text-blue-600">
-                    Manajemen DTR
+                    Manajemen 
                 </p>
 
                 <h2 class="text-2xl font-bold tracking-tight text-slate-800">
-                    Tambah DTR
+                    Tambah Panduan
                 </h2>
 
                 <p class="mt-1 text-sm text-slate-500">
@@ -196,7 +118,7 @@
 
                             <div>
                                 <h3 class="font-semibold text-slate-800">
-                                    Informasi DTR
+                                    Informasi Panduan
                                 </h3>
 
                                 <p class="text-sm text-slate-500">
@@ -236,7 +158,7 @@
                         <div>
                             <label for="judul_dtr"
                                    class="mb-2 block text-sm font-semibold text-slate-700">
-                                Judul DTR
+                                Judul Panduan
                             </label>
 
                             <input type="text"
@@ -488,61 +410,10 @@
                 </section>
 
 
-                {{-- =====================================================
-                     4. FILE PENDUKUNG
-                ====================================================== --}}
-                <section class="mb-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-
-                    <div class="border-b border-slate-200 px-6 py-5">
-
-                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-
-                            <div>
-                                <h3 class="font-semibold text-slate-800">
-                                    File Pendukung
-                                </h3>
-
-                                <p class="mt-1 text-sm text-slate-500">
-                                    Tambahkan dokumen pendukung yang berhubungan dengan DTR.
-                                </p>
-                            </div>
-
-                            <button type="button"
-                                    id="addFile"
-                                    class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
-
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     class="h-4 w-4"
-                                     fill="none"
-                                     viewBox="0 0 24 24"
-                                     stroke="currentColor"
-                                     stroke-width="2">
-                                    <path stroke-linecap="round"
-                                          stroke-linejoin="round"
-                                          d="M12 4v16m8-8H4" />
-                                </svg>
-
-                                Tambah File
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="p-6">
-
-                        <div id="fileContainer"
-                             class="space-y-4">
-                        </div>
-
-                    </div>
-
-                </section>
-
+              
 
                 {{-- =====================================================
-                     5. CATATAN KESELURUHAN
+                     4. CATATAN KESELURUHAN
                 ====================================================== --}}
                 <section class="mb-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
 
@@ -584,7 +455,7 @@
                     <button type="submit"
                             class="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700">
 
-                        Lanjut ke Rangkuman
+                        Lanjut Pengajuan
 
                         <svg xmlns="http://www.w3.org/2000/svg"
                              class="h-4 w-4"
@@ -755,11 +626,11 @@
 
                             <div>
                                 <h4 class="text-sm font-semibold text-slate-700">
-                                    Video Pemeriksaan
+                                    link Panduan Pemeriksaan
                                 </h4>
 
                                 <p class="mt-1 text-xs text-slate-400">
-                                    Bisa menambahkan beberapa video.
+                                    Bisa menambahkan beberapa kolom
                                 </p>
                             </div>
 
@@ -924,53 +795,52 @@
         | TAMBAH VIDEO
         |--------------------------------------------------------------------------
         */
+function addVideo(checklistIndex) {
 
-        function addVideo(checklistIndex) {
+    const container = document.getElementById(
+        `videos-${checklistIndex}`
+    );
 
-            const container = document.getElementById(
-                `videos-${checklistIndex}`
-            );
+    const videoIndex = container.children.length;
 
-            const videoIndex = container.children.length;
+    const html = `
+        <div class="video-item grid grid-cols-1 gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 md:grid-cols-[1fr_1fr_auto]">
 
-            const html = `
-                <div class="video-item grid grid-cols-1 gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 md:grid-cols-[1fr_1fr_auto]">
+            <input type="url"
+                   name="checklists[${checklistIndex}][videos][${videoIndex}][video]"
+                   placeholder="https://onedrive.live.com/... atau https://terabox.com/..."
+                   required
+                   class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-xs outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
 
-                    <input type="file"
-                           name="checklists[${checklistIndex}][videos][${videoIndex}][video]"
-                           accept=".mp4,.mov,.avi,.webm"
-                           required
-                           class="block w-full rounded-lg border border-slate-300 bg-white text-xs text-slate-600 file:mr-3 file:border-0 file:bg-slate-100 file:px-3 file:py-2 file:text-xs file:font-medium">
+            <input type="text"
+                   name="checklists[${checklistIndex}][videos][${videoIndex}][caption]"
+                   placeholder="Keterangan video"
+                   class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-xs outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
 
-                    <input type="text"
-                           name="checklists[${checklistIndex}][videos][${videoIndex}][caption]"
-                           placeholder="Caption video"
-                           class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-xs outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+            <button type="button"
+                    onclick="this.closest('.video-item').remove()"
+                    class="inline-flex h-9 items-center justify-center rounded-lg border border-red-200 px-3 text-red-500 hover:bg-red-50">
 
-                    <button type="button"
-                            onclick="this.closest('.video-item').remove()"
-                            class="inline-flex h-9 items-center justify-center rounded-lg border border-red-200 px-3 text-red-500 hover:bg-red-50">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="h-4 w-4"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor"
+                     stroke-width="2">
 
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             class="h-4 w-4"
-                             fill="none"
-                             viewBox="0 0 24 24"
-                             stroke="currentColor"
-                             stroke-width="2">
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M6 18L18 6M6 6l12 12" />
 
-                    </button>
+                </svg>
 
-                </div>
-            `;
+            </button>
 
-            container.insertAdjacentHTML('beforeend', html);
-        }
+        </div>
+    `;
 
-
+    container.insertAdjacentHTML('beforeend', html);
+}
         /*
         |--------------------------------------------------------------------------
         | TAMBAH FILE
@@ -986,10 +856,6 @@
 
                     <div class="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr_1fr_auto]">
 
-                        <input type="text"
-                               name="files[${fileIndex}][nama_file]"
-                               placeholder="Nama file"
-                               class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
 
                         <input type="file"
                                name="files[${fileIndex}][file]"
@@ -1082,6 +948,8 @@
 
     </script>
 
-</body>
+<      </div>
 
-</html>
+    </div>
+
+</x-layouts.auto-repair>

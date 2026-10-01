@@ -1,7 +1,11 @@
 <x-layouts.auto-repair
-    title="Verifikasi File Referensi"
-    description="Setujui atau tolak file yang telah diupload oleh Admin."
+    title=""
+    description=""
 >
+
+    <div class="w-full max-w-none">
+     
+
 
 
     {{-- HEADER --}}

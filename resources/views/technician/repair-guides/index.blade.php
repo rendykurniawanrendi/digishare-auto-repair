@@ -1,6 +1,6 @@
 <x-layouts.auto-repair
-    title="File Referensi"
-    description="Akses file referensi yang telah diverifikasi oleh Super Admin"
+    title=""
+    description=""
 >
 
     <div class="w-full max-w-none">
@@ -146,7 +146,7 @@
                         <div>
 
                             <h3 class="text-base font-semibold text-slate-800">
-                                DTR Terverifikasi
+                                Panduan Terverifikasi
                             </h3>
 
                             <p class="mt-1 text-sm text-slate-500">
@@ -188,7 +188,7 @@
                                         <div class="mb-3 flex flex-wrap items-center gap-2">
 
                                             <span class="rounded-lg bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-700">
-                                                DTR #{{ $guide->id }}
+                                                Panduan #{{ $guide->id }}
                                             </span>
 
                                             <span class="rounded-lg bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">

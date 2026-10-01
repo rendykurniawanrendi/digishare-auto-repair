@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Technician;
 
 use App\Http\Controllers\Controller;
 use App\Models\RepairGuide;
-use App\Models\RepairGuideVideo;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 
 class RepairGuideController extends Controller
 {
@@ -102,54 +101,5 @@ class RepairGuideController extends Controller
             '.pdf';
 
         return $pdf->download($filename);
-    }
-    /**
-     * Download video pemeriksaan.
-     * Teknisi hanya dapat mendownload video dari DTR approved.
-     */
-    public function downloadVideo(
-        RepairGuide $repairGuide,
-        RepairGuideVideo $video
-    ) {
-        abort_unless(
-            $repairGuide->status === 'approved',
-            404
-        );
-
-        // Pastikan video memang milik checklist dari DTR tersebut.
-        $videoBelongsToGuide = $repairGuide->checklists()
-            ->whereHas('videos', function ($query) use ($video) {
-                $query->where('id', $video->id);
-            })
-            ->exists();
-
-        abort_unless(
-            $videoBelongsToGuide,
-            404
-        );
-
-        if (
-            !$video->video ||
-            !Storage::disk('public')->exists($video->video)
-        ) {
-            abort(404, 'Video tidak ditemukan.');
-        }
-
-        $extension = pathinfo(
-            $video->video,
-            PATHINFO_EXTENSION
-        );
-
-        $filename = 'Video-DTR-' .
-            $repairGuide->id .
-            '-' .
-            ($video->id) .
-            '.' .
-            $extension;
-
-        return Storage::disk('public')->download(
-            $video->video,
-            $filename
-        );
     }
 }

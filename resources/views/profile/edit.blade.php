@@ -1,6 +1,6 @@
 <x-layouts.auto-repair
-    title="Profil"
-    description="Kelola informasi akun dan keamanan profil Anda."
+    title=""
+    description=""
 >
 
     <div class="max-w-5xl">

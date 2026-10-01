@@ -14,7 +14,7 @@
 
                 <div>
                     <p class="text-sm font-bold text-white">
-                        DigiShare
+                        Digi Share
                     </p>
 
                     <p class="text-[10px] text-slate-400">

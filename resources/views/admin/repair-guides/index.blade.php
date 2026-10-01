@@ -1,6 +1,6 @@
 <x-layouts.auto-repair
-    title="Panduan Perbaikan"
-    description="Kelola dan pantau seluruh Data Technical Report"
+    title=""
+    description=""
 >
 
     <div class="w-full max-w-none">
@@ -10,13 +10,13 @@
 
                 <div>
                     <div class="mb-1 flex items-center gap-2 text-xs font-medium text-slate-400">
-                        <span>Admin</span>
-                        <span>/</span>
-                        <span>DTR</span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
 
                     <h2 class="text-2xl font-bold text-slate-800">
-                        Daftar DTR
+                        Daftar Panduan
                     </h2>
 
                     <p class="mt-1 text-sm text-slate-500">
@@ -38,7 +38,7 @@
                               d="M12 4v16m8-8H4"/>
                     </svg>
 
-                    Buat DTR
+                    Buat Panduan
                 </a>
 
             </div>
@@ -127,7 +127,7 @@
                             <tr>
 
                                 <th class="w-[19%] px-6 py-4 text-xs font-bold uppercase tracking-wide text-slate-500">
-                                    DTR
+                                    Panduan
                                 </th>
 
                                 <th class="w-[18%] px-6 py-4 text-xs font-bold uppercase tracking-wide text-slate-500">
@@ -187,7 +187,7 @@
                                         </p>
 
                                         <p class="mt-1 text-xs font-medium text-slate-400">
-                                            DTR #{{ $guide->id }}
+                                            Panduan #{{ $guide->id }}
                                         </p>
 
                                         <p class="mt-2 text-xs text-slate-400">

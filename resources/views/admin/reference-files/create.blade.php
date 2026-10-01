@@ -1,90 +1,9 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<x-layouts.auto-repair
+    title=""
+    description=""
+>
 
-    <title>Upload File Referensi - Auto Repair</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body class="bg-slate-100 text-slate-800">
-
-    {{-- =========================================================
-        NAVBAR
-    ========================================================== --}}
-    <header class="fixed left-0 right-0 top-0 z-50 h-16 border-b border-slate-200 bg-white">
-
-        <div class="flex h-full items-center justify-between px-6">
-
-            {{-- Logo / Brand --}}
-            <div class="flex items-center gap-3">
-
-                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5 text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M10.5 6h3m-6.75 0h10.5M5.25 9h13.5M6 12h12m-10.5 3h9"
-                        />
-                    </svg>
-                </div>
-
-                <div>
-                    <h1 class="text-base font-bold text-slate-800">
-                        Auto Repair
-                    </h1>
-
-                    <p class="text-xs text-slate-500">
-                        Admin System
-                    </p>
-                </div>
-
-            </div>
-
-
-            {{-- User --}}
-            <div class="flex items-center gap-3">
-
-                <div class="hidden text-right sm:block">
-                    <p class="text-sm font-semibold text-slate-700">
-                        {{ Auth::user()->name }}
-                    </p>
-
-                    <p class="text-xs text-slate-500">
-                        Administrator
-                    </p>
-                </div>
-
-                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-700">
-                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                </div>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    {{-- =========================================================
-        SIDEBAR
-    ========================================================== --}}
-    @include('admin.components.sidebar')
-
-
-    {{-- =========================================================
-        MAIN CONTENT
-    ========================================================== --}}
-    <main class="ml-64 min-h-screen bg-slate-100 pt-16">
+    <div class="w-full max-w-none">
 
         <div class="w-full px-6 py-8 lg:px-10 xl:px-12">
 
@@ -445,6 +364,9 @@
             }
         });
     </script>
+        </div>
 
-</body>
-</html>
+
+    </div>
+
+</x-layouts.auto-repair>

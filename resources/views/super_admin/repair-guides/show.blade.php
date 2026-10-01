@@ -1,75 +1,9 @@
-<!DOCTYPE html>
-<html lang="id">
+<x-layouts.auto-repair
+    title=""
+    description=""
+>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Verifikasi DTR - Auto Repair</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body class="bg-slate-100 text-slate-800">
-
-    {{-- NAVBAR --}}
-    <header class="fixed left-0 right-0 top-0 z-50 h-16 border-b border-slate-200 bg-white">
-
-        <div class="flex h-full items-center justify-between px-6">
-
-            <div class="flex items-center gap-3">
-
-                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-sm font-bold text-white">
-                    AR
-                </div>
-
-                <div>
-                    <h1 class="text-sm font-bold tracking-wide text-slate-800">
-                        AUTO REPAIR
-                    </h1>
-
-                    <p class="text-[10px] text-slate-400">
-                        Internal Management System
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="flex items-center gap-3">
-
-                <div class="hidden text-right sm:block">
-
-                    <p class="text-sm font-semibold text-slate-700">
-                        {{ auth()->user()->name }}
-                    </p>
-
-                    <p class="text-xs text-slate-400">
-                        Super Admin
-                    </p>
-
-                </div>
-
-
-                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">
-
-                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    {{-- SIDEBAR --}}
-    @include('super_admin.components.sidebar')
-
-
-    {{-- MAIN --}}
-    <main class="ml-64 min-h-screen bg-slate-100 pt-16">
+    <div class="w-full max-w-none">
 
         <div class="px-6 py-7 lg:px-10">
 
@@ -94,7 +28,7 @@
                         </p>
 
                         <h2 class="mt-1 text-2xl font-bold text-slate-800">
-                            Verifikasi DTR
+                            Verifikasi Panduan
                         </h2>
 
                         <p class="mt-1 text-sm text-slate-500">
@@ -167,7 +101,7 @@
                 <div class="border-b border-slate-100 px-6 py-5">
 
                     <h3 class="text-base font-bold text-slate-800">
-                        Informasi DTR
+                        Informasi Panduan
                     </h3>
 
                     <p class="mt-1 text-xs text-slate-400">
@@ -182,7 +116,7 @@
                     <div>
 
                         <p class="text-xs text-slate-400">
-                            Judul DTR
+                            Judul Panduan
                         </p>
 
                         <p class="mt-1 text-sm font-semibold text-slate-700">
@@ -208,7 +142,7 @@
                     <div>
 
                         <p class="text-xs text-slate-400">
-                            Nomor DTR
+                            Nomor Pengajuan Panduan
                         </p>
 
                         <p class="mt-1 text-sm font-semibold text-slate-700">
@@ -447,68 +381,49 @@
 
                             @endif
 
+{{-- VIDEO --}}
+@if($checklist->videos->count())
 
-                            {{-- VIDEO --}}
-                            @if($checklist->videos->count())
+    <div class="mt-6">
 
-                                <div class="mt-6">
+        <h4 class="mb-3 text-sm font-semibold text-slate-700">
+            Link Video Pemeriksaan Beserta Panduan Link Refrensi
+        </h4>
 
-                                    <h4 class="mb-3 text-sm font-semibold text-slate-700">
-                                        Video Pemeriksaan
-                                    </h4>
+        <div class="grid gap-4 lg:grid-cols-2">
 
+            @foreach($checklist->videos as $video)
 
-                                    <div class="grid gap-5 lg:grid-cols-2">
+                <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-4">
 
-                                        @foreach($checklist->videos as $video)
+                    <p class="mb-2 text-xs font-semibold text-slate-700">
+                        Panduan {{ $loop->iteration }}
+                    </p>
 
-                                            <div class="overflow-hidden rounded-xl border border-slate-200">
+                    @if($video->caption)
+                        <p class="mb-3 text-xs leading-5 text-slate-500">
+                            {{ $video->caption }}
+                        </p>
+                    @endif
 
-                                                <video
-                                                    controls
-                                                    preload="metadata"
-                                                    class="h-56 w-full bg-black">
+                    <a
+                        href="{{ $video->video }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-blue-700"
+                    >
+                        Lihat Panduan 
+                    </a>
 
-                                                    <source
-                                                        src="{{ asset('storage/' . $video->video) }}">
+                </div>
 
-                                                </video>
+            @endforeach
 
+        </div>
 
-                                                @if($video->caption)
+    </div>
 
-                                                    <div class="border-t border-slate-200 px-4 py-3">
-
-                                                        <p class="text-xs leading-5 text-slate-500">
-                                                            {{ $video->caption }}
-                                                        </p>
-
-                                                    </div>
-
-                                                @endif
-
-                                            </div>
-
-                                        @endforeach
-
-                                    </div>
-
-                                </div>
-
-                            @endif
-
-
-                            @if(!$checklist->photos->count() && !$checklist->videos->count())
-
-                                <div class="mt-5 rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-5 text-center">
-
-                                    <p class="text-xs text-slate-400">
-                                        Tidak ada dokumentasi untuk checklist ini.
-                                    </p>
-
-                                </div>
-
-                            @endif
+@endif
 
                         </div>
 
@@ -529,66 +444,7 @@
             </div>
 
 
-            {{-- =====================================================
-                FILE PENDUKUNG
-            ====================================================== --}}
-
-            <div class="mb-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-
-                <div class="border-b border-slate-100 px-6 py-5">
-
-                    <h3 class="text-base font-bold text-slate-800">
-                        File Pendukung
-                    </h3>
-
-                </div>
-
-
-                <div class="p-6">
-
-                    @forelse($repairGuide->files as $file)
-
-                        <div class="mb-3 flex flex-col gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:flex-row sm:items-center sm:justify-between">
-
-                            <div>
-
-                                <p class="text-sm font-semibold text-slate-700">
-                                    {{ $file->nama_file }}
-                                </p>
-
-                                @if($file->deskripsi)
-
-                                    <p class="mt-1 text-xs text-slate-400">
-                                        {{ $file->deskripsi }}
-                                    </p>
-
-                                @endif
-
-                            </div>
-
-
-                            <a
-                                href="{{ asset('storage/' . $file->file) }}"
-                                target="_blank"
-                                class="inline-flex w-fit items-center rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100">
-
-                                Buka File
-
-                            </a>
-
-                        </div>
-
-                    @empty
-
-                        <p class="text-sm text-slate-400">
-                            Belum ada file pendukung.
-                        </p>
-
-                    @endforelse
-
-                </div>
-
-            </div>
+        
 
 
             {{-- =====================================================
@@ -878,6 +734,8 @@
 
     </script>
 
-</body>
+ 
+        </div>
+    </div>
 
-</html>
+</x-layouts.auto-repair>

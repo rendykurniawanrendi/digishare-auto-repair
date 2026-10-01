@@ -1,10 +1,9 @@
 <x-layouts.auto-repair
-    title="Verifikasi Panduan"
-    description="Periksa dan verifikasi DTR yang dikirim Admin"
+    title=""
+    description=""
 >
 
-
-
+    <div class="w-full max-w-none">
      
 
 
@@ -23,11 +22,11 @@
 
                     <div>
                         <h2 class="text-xl font-bold text-slate-800">
-                            Daftar DTR
+                            Verifikasi Panduan
                         </h2>
 
                         <p class="mt-1 text-sm text-slate-500">
-                            Periksa DTR sebelum dipublikasikan kepada Teknisi.
+                            Periksa Panduan sebelum dipublikasikan kepada Teknisi.
                         </p>
                     </div>
 
@@ -54,14 +53,14 @@
                     <div class="md:col-span-2">
 
                         <label class="mb-2 block text-sm font-semibold text-slate-700">
-                            Cari DTR
+                            Cari Panduan Pengajuan
                         </label>
 
                         <input
                             type="text"
                             name="search"
                             value="{{ $search }}"
-                            placeholder="Judul DTR, dealer, nomor polisi, model..."
+                            placeholder="Judul Panduan, dealer, nomor polisi, model..."
                             class="w-full rounded-xl border-slate-300 px-4 py-3 text-sm shadow-sm focus:border-slate-500 focus:ring-slate-500"
                         >
 
@@ -143,7 +142,7 @@
                                 </th>
 
                                 <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-slate-500">
-                                    DTR
+                                    Panduan
                                 </th>
 
                                 <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-slate-500">
@@ -348,5 +347,11 @@
                 @endif
 
             </div>
+            
+     
+        
+        </div>
+    </div>
 
 </x-layouts.auto-repair>
+

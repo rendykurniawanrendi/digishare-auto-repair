@@ -21,6 +21,7 @@ class RepairGuide extends Model
         'tgl_perbaikan',
         'jarak_tempuh',
         'catatan_keseluruhan',
+        'pdf_panduan',
         'status',
         'verified_by',
         'verified_at',

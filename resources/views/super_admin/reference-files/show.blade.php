@@ -1,65 +1,11 @@
-<!DOCTYPE html>
-<html lang="id">
+<x-layouts.auto-repair
+    title=" "
+    description=""
+>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="w-full max-w-none">
+     
 
-    <title>Detail File Referensi - Auto Repair</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body class="bg-slate-100 text-slate-800">
-
-    {{-- Navbar --}}
-    <header class="fixed top-0 right-0 left-64 z-30 h-16 border-b border-slate-200 bg-white">
-
-        <div class="flex h-full items-center justify-between px-8">
-
-            <div>
-                <h1 class="text-lg font-bold text-slate-800">
-                    Verifikasi File
-                </h1>
-
-                <p class="text-xs text-slate-500">
-                    Periksa file referensi sebelum diberikan kepada Teknisi
-                </p>
-            </div>
-
-
-            <div class="flex items-center gap-3">
-
-                <div class="hidden text-right sm:block">
-
-                    <p class="text-sm font-semibold text-slate-700">
-                        {{ auth()->user()->name }}
-                    </p>
-
-                    <p class="text-xs text-slate-500">
-                        Super Admin
-                    </p>
-
-                </div>
-
-
-                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 text-sm font-bold text-white">
-                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-                </div>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    {{-- Sidebar --}}
-    @include('super_admin.components.sidebar')
-
-
-    {{-- Main --}}
-    <main class="ml-64 min-h-screen pt-16">
 
         <div class="p-8">
 
@@ -699,6 +645,8 @@
 
     </main>
 
-</body>
+ 
+        </div>
+    </div>
 
-</html>
+</x-layouts.auto-repair>

@@ -1,6 +1,6 @@
 <x-layouts.auto-repair
     title="Dashboard Teknisi"
-    description="Akses panduan perbaikan dan file referensi melalui sistem DigiShare."
+    description="."
 >
 
     {{-- =========================================================

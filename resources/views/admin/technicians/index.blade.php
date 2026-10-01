@@ -1,6 +1,6 @@
 <x-layouts.auto-repair
-    title="Daftar Teknisi"
-    description="Kelola akun teknisi yang dapat mengakses sistem Auto Repair"
+    title=""
+    description=""
 >
 
     <div class="w-full max-w-none">

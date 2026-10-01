@@ -73,9 +73,8 @@ class RepairGuideController extends Controller
             'checklists.*.videos' => ['nullable', 'array'],
             'checklists.*.videos.*.video' => [
                 'nullable',
-                'file',
-                'mimes:mp4,mov,avi,webm',
-                'max:102400'
+                'url',
+                'max:2048'
             ],
             'checklists.*.videos.*.caption' => [
                 'nullable',
@@ -164,23 +163,13 @@ class RepairGuideController extends Controller
 
                 foreach ($videos as $videoIndex => $videoData) {
 
-                    $field =
-                        "checklists.{$checklistIndex}.videos.{$videoIndex}.video";
-
-                    if (!$request->hasFile($field)) {
+                    if (empty($videoData['video'])) {
                         continue;
                     }
 
-                    $video = $request->file($field);
-
-                    $videoPath = $video->store(
-                        'repair-guides/videos',
-                        'public'
-                    );
-
                     RepairGuideVideo::create([
                         'repair_guide_checklist_id' => $checklist->id,
-                        'video' => $videoPath,
+                        'video' => $videoData['video'],
                         'caption' => $videoData['caption'] ?? null,
                         'urutan' => $videoIndex + 1,
                     ]);
@@ -325,9 +314,8 @@ class RepairGuideController extends Controller
 
             'checklists.*.videos.*.video' => [
                 'nullable',
-                'file',
-                'mimes:mp4,mov,avi,webm',
-                'max:102400'
+                'url',
+                'max:2048'
             ],
 
             'checklists.*.videos.*.caption' => [
@@ -647,42 +635,19 @@ class RepairGuideController extends Controller
                  * VIDEO BARU
                  * ======================================================
                  */
+                $videos = $checklistData['videos'] ?? [];
 
-                $videos =
-                    $checklistData['videos'] ?? [];
+                foreach ($videos as $videoIndex => $videoData) {
 
-                foreach (
-                    $videos as $videoIndex => $videoData
-                ) {
-
-                    $field =
-                        "checklists.{$checklistIndex}.videos.{$videoIndex}.video";
-
-                    if (!$request->hasFile($field)) {
+                    if (empty($videoData['video'])) {
                         continue;
                     }
 
-                    $video =
-                        $request->file($field);
-
-                    $videoPath =
-                        $video->store(
-                            'repair-guides/videos',
-                            'public'
-                        );
-
                     RepairGuideVideo::create([
-                        'repair_guide_checklist_id' =>
-                        $checklist->id,
-
-                        'video' =>
-                        $videoPath,
-
-                        'caption' =>
-                        $videoData['caption'] ?? null,
-
-                        'urutan' =>
-                        $checklist->videos()->count() + 1,
+                        'repair_guide_checklist_id' => $checklist->id,
+                        'video' => $videoData['video'],
+                        'caption' => $videoData['caption'] ?? null,
+                        'urutan' => $checklist->videos()->count() + 1,
                     ]);
                 }
             }

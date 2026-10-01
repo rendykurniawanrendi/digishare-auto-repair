@@ -1,6 +1,6 @@
 <x-layouts.auto-repair
-    title="File Referensi"
-    description="Kelola file referensi untuk proses verifikasi"
+    title=""
+    description=""
 >
 
     <div class="w-full max-w-none">
@@ -56,7 +56,7 @@
                             <tr>
 
                                 <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                                    #
+                                    No
                                 </th>
 
                                 <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-slate-500">

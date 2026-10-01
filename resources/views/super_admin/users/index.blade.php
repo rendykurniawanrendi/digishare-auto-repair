@@ -1,6 +1,6 @@
 <x-layouts.auto-repair
-    title="Kelola Admin dan Teknisi"
-    description="Kelola akun Administrator dan Teknisi"
+    title=""
+    description=""
 >
 
    

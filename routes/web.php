@@ -224,6 +224,7 @@ Route::middleware(['auth', 'teknisi'])
             ->name('dashboard');
 
 
+
         // Panduan Perbaikan
         Route::get('/repair-guides', [TechnicianRepairGuideController::class, 'index'])
             ->name('repair-guides.index');
@@ -231,19 +232,22 @@ Route::middleware(['auth', 'teknisi'])
         Route::get('/repair-guides/{repairGuide}', [TechnicianRepairGuideController::class, 'show'])
             ->name('repair-guides.show');
 
-        Route::get('/repair-guides/{repairGuide}/videos/{video}/download', [TechnicianRepairGuideController::class, 'downloadVideo'])
-            ->name('repair-guides.videos.download');
-
         Route::get('/repair-guides/{repairGuide}/pdf', [TechnicianRepairGuideController::class, 'pdf'])
             ->name('repair-guides.pdf');
 
-        // File Referensi
+
+
+
+        // Reference File
         Route::get('/reference-files', [TechnicianReferenceFileController::class, 'index'])
             ->name('reference-files.index');
 
         Route::get('/reference-files/{referenceFile}/download', [TechnicianReferenceFileController::class, 'download'])
             ->name('reference-files.download');
     });
+
+
+
 
 
 /*

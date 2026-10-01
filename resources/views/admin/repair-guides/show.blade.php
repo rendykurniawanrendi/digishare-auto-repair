@@ -1,88 +1,9 @@
-<!DOCTYPE html>
-<html lang="id">
+<x-layouts.auto-repair
+    title=""
+    description=""
+>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>{{ $repairGuide->judul_dtr }} - Auto Repair</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body class="bg-slate-100 text-slate-800">
-
-    {{-- NAVBAR --}}
-    <nav class="fixed left-0 right-0 top-0 z-50 h-16 border-b border-slate-200 bg-white">
-        <div class="flex h-full items-center justify-between px-6">
-
-            <div class="flex items-center gap-3">
-
-                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-sm font-bold text-white">
-                    AR
-                </div>
-
-                <div>
-                    <h1 class="text-sm font-bold tracking-wide text-slate-800">
-                        AUTO REPAIR
-                    </h1>
-
-                    <p class="text-[10px] text-slate-400">
-                        Internal Management System
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="flex items-center gap-3">
-
-                <div class="hidden text-right sm:block">
-                    <p class="text-sm font-semibold text-slate-700">
-                        {{ auth()->user()->name }}
-                    </p>
-
-                    <p class="text-xs text-slate-400">
-                        Administrator
-                    </p>
-                </div>
-
-                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-sm font-semibold text-white">
-                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-                </div>
-
-            </div>
-
-        </div>
-    </nav>
-
-
-    {{-- SIDEBAR --}}
-    @include('admin.components.sidebar')
-
-
-    {{-- MAIN --}}
-    <main class="ml-64 pt-16">
-
-        <div class="px-6 py-6">
-
-            {{-- HEADER --}}
-            <div class="mb-6">
-
-                <div class="mb-2 flex items-center gap-2 text-xs font-medium text-slate-400">
-                    <a href="{{ route('admin.repair-guides.index') }}"
-                       class="transition hover:text-slate-700">
-                        Daftar DTR
-                    </a>
-
-                    <span>/</span>
-
-                    <span>Detail DTR</span>
-                </div>
-
-
-                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-
+ <div class="w-full max-w-none">
                     <div>
 
                         <h2 class="text-2xl font-bold text-slate-800">
@@ -505,64 +426,117 @@
                             @endif
 
 
-                            {{-- VIDEO --}}
-                            @if($checklist->videos->count())
+                           {{-- VIDEO --}}
+@if($checklist->videos->count())
 
-                                <div class="mt-6">
+    <div class="mt-6">
 
-                                    <div class="mb-3 flex items-center justify-between">
+        <div class="mb-3 flex items-center justify-between">
 
-                                        <h4 class="text-sm font-semibold text-slate-700">
-                                            Video Pemeriksaan
-                                        </h4>
+            <h4 class="text-sm font-semibold text-slate-700">
+                Video Pemeriksaan
+            </h4>
 
-                                        <span class="text-xs text-slate-400">
-                                            {{ $checklist->videos->count() }} video
-                                        </span>
+            <span class="text-xs text-slate-400">
+                {{ $checklist->videos->count() }} video
+            </span>
 
-                                    </div>
-
-
-                                    <div class="grid gap-5 lg:grid-cols-2">
-
-                                        @foreach($checklist->videos as $video)
-
-                                            <div class="overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
-
-                                                <video
-                                                    controls
-                                                    preload="metadata"
-                                                    class="h-56 w-full bg-black object-contain">
-
-                                                    <source
-                                                        src="{{ asset('storage/' . $video->video) }}">
-
-                                                    Browser Anda tidak mendukung video.
-
-                                                </video>
+        </div>
 
 
-                                                @if($video->caption)
+        <div class="grid gap-5 lg:grid-cols-2">
 
-                                                    <div class="border-t border-slate-200 bg-white px-4 py-3">
+            @foreach($checklist->videos as $video)
 
-                                                        <p class="text-xs leading-5 text-slate-600">
-                                                            {{ $video->caption }}
-                                                        </p>
+                <div class="overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
 
-                                                    </div>
+                    <div class="p-4">
 
-                                                @endif
+                        <div class="flex items-start gap-3">
 
-                                            </div>
+                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
 
-                                        @endforeach
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="h-5 w-5"
+                                     fill="none"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor"
+                                     stroke-width="2">
 
-                                    </div>
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.868v4.264a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
 
-                                </div>
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
 
-                            @endif
+                                </svg>
+
+                            </div>
+
+
+                            <div class="min-w-0 flex-1">
+
+                                <p class="text-sm font-semibold text-slate-700">
+                                    Video Pemeriksaan
+                                </p>
+
+                                @if($video->caption)
+
+                                    <p class="mt-1 text-xs leading-5 text-slate-500">
+                                        {{ $video->caption }}
+                                    </p>
+
+                                @endif
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="{{ $video->video }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-blue-700">
+
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 class="h-4 w-4"
+                                 fill="none"
+                                 viewBox="0 0 24 24"
+                                 stroke="currentColor"
+                                 stroke-width="2">
+
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4"/>
+
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M14 4h6v6"/>
+
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M20 4l-9 9"/>
+
+                            </svg>
+
+                            Lihat Video
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            @endforeach
+
+        </div>
+
+    </div>
+
+@endif
 
 
                             {{-- EMPTY DOCUMENTATION --}}
@@ -837,10 +811,9 @@
 
             </div>
 
+     
         </div>
 
-    </main>
+    </div>
 
-</body>
-
-</html>
+</x-layouts.auto-repair>

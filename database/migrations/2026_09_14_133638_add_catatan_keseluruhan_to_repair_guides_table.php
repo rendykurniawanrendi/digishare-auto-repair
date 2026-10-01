@@ -6,23 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('repair_guides', function (Blueprint $table) {
-            //
+            $table->longText('catatan_keseluruhan')
+                ->nullable()
+                ->after('jarak_tempuh');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('repair_guides', function (Blueprint $table) {
-            //
+            $table->dropColumn('catatan_keseluruhan');
         });
     }
 };
